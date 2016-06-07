@@ -7,12 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 public static class ComponentIds {
+    public const int City = 0;
+    public const int PlayersCount = 1;
 
-    public const int TotalComponents = 0;
+    public const int TotalComponents = 2;
 
     public static readonly string[] componentNames = {
+        "City",
+        "PlayersCount"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(CityComponent),
+        typeof(PlayersCountComponent)
     };
 }
