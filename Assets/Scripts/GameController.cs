@@ -39,6 +39,10 @@ public class GameController : MonoBehaviour {
         .Add(pool.CreateSystem<CharacterCardsInitializeSystem>())
         .Add(pool.CreateSystem<DistrictCardsInitializeSystem>())
         .Add(pool.CreateSystem<CardDealingSystem>())
+        .Add(pool.CreateSystem<GoldInitializeSystem>())
+
+        .Add(pool.CreateSystem<NextTurnReactiveSystem>())
+        .Add(pool.CreateSystem<BankReactiveSystem>())
         .Add(pool.CreateSystem(_buildingSystem));
 //            .Add(pool.CreateGameBoardSystem())
 //            .Add(pool.CreateCreateGameBoardCacheSystem())

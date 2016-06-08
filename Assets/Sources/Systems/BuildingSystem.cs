@@ -86,7 +86,7 @@ public class BuildingSystem : MonoBehaviour, IReactiveSystem, ISetPool
         districts.Add(District.GreatWall, GreatWallPrefab);
         districts.Add(District.University, UniversityPrefab);
         districts.Add(District.DragonGate, DragonGatePrefab);
-}
+    }
 
 
     public void Execute(List<Entity> entities)
@@ -94,24 +94,51 @@ public class BuildingSystem : MonoBehaviour, IReactiveSystem, ISetPool
         foreach(var entity in entities)
         {
             var ownerId = entity.owner.OwnerId;
+            var player = _pool.GetEntities(Matcher.Player).FirstOrDefault(e => e.player.Id == ownerId);
+            var currentTurn = _pool.GetEntities(Matcher.CurrentTurn).SingleEntity();
+
+            if(currentTurn.buildCount.Count == 0)
+            {
+                Debug.LogError("Can't build in this turn anymore");
+                _pool.DestroyEntity(entity);
+                continue;
+            }
+
             var districtType = entity.buildDistrictOrder.Type;
             var cards = _pool.GetEntities(Matcher.AllOf(Matcher.DistrictCard, Matcher.Owner));
             var availableCards = cards.Where(c => !c.hasBuilt && c.owner.OwnerId == ownerId);
             var targetCard = availableCards.FirstOrDefault(c => c.districtCard.Type == districtType);
-            if(targetCard != null)
+
+            if (targetCard == null)
             {
-                var cityEntity = _pool.GetEntities(Matcher.City).Where(c => c.owner.OwnerId == ownerId).FirstOrDefault();
-                var place = cityEntity.city.City.GetFirstAvailablePlace();
-                if (place != null)
-                {
-                    var district = Instantiate(districts[districtType], place.position, place.rotation) as GameObject;
-                    district.transform.SetParent(place);
-                    targetCard.AddBuilt(district);
-                }
-            } else
-            {
-                Debug.LogError("You don't have such card");
+                Debug.LogError("Player doesn't have such card");
+                _pool.DestroyEntity(entity);
+                continue;
             }
+
+            if (targetCard.cost.Price > player.gold.Count)
+            {
+                Debug.LogError("Not enough gold");
+                _pool.DestroyEntity(entity);
+                continue;
+            }
+            
+            var cityEntity = _pool.GetEntities(Matcher.City).Where(c => c.owner.OwnerId == ownerId).FirstOrDefault();
+            var place = cityEntity.city.City.GetFirstAvailablePlace();
+            if (place == null)
+            {
+                Debug.LogError("No place to build");
+                _pool.DestroyEntity(entity);
+                continue;
+            }
+            
+            var district = Instantiate(districts[districtType], place.position, place.rotation) as GameObject;
+            district.transform.SetParent(place);
+            targetCard.AddBuilt(district);
+
+            player.ReplaceGold(player.gold.Count - targetCard.cost.Price);
+            currentTurn.ReplaceBuildCount(currentTurn.buildCount.Count - 1);
+
             _pool.DestroyEntity(entity);
         }
     }

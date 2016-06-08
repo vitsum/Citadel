@@ -7,40 +7,52 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 public static class ComponentIds {
-    public const int AdditionalCost = 0;
-    public const int AvailableCharacter = 1;
-    public const int Blue = 2;
-    public const int BuildDistrictOrder = 3;
-    public const int Built = 4;
-    public const int Character = 5;
-    public const int City = 6;
-    public const int Cost = 7;
-    public const int CurrentTurn = 8;
-    public const int DistrictCard = 9;
-    public const int Expansion = 10;
-    public const int Green = 11;
-    public const int InTheDeck = 12;
-    public const int Owner = 13;
-    public const int Player = 14;
-    public const int PlayersCount = 15;
-    public const int Purple = 16;
-    public const int Red = 17;
-    public const int Yellow = 18;
+    public const int ActionDone = 0;
+    public const int AdditionalCost = 1;
+    public const int AvailableCharacter = 2;
+    public const int Blue = 3;
+    public const int BuildCount = 4;
+    public const int BuildDistrictOrder = 5;
+    public const int Built = 6;
+    public const int Character = 7;
+    public const int City = 8;
+    public const int Cost = 9;
+    public const int Crown = 10;
+    public const int CurrentCharacter = 11;
+    public const int CurrentTurn = 12;
+    public const int DistrictCard = 13;
+    public const int Expansion = 14;
+    public const int Gold = 15;
+    public const int Green = 16;
+    public const int InTheDeck = 17;
+    public const int Owner = 18;
+    public const int Player = 19;
+    public const int PlayersCount = 20;
+    public const int Purple = 21;
+    public const int Red = 22;
+    public const int TakeCoinsFromBankAction = 23;
+    public const int TakeDistrictCardFromDeckAction = 24;
+    public const int Yellow = 25;
 
-    public const int TotalComponents = 19;
+    public const int TotalComponents = 26;
 
     public static readonly string[] componentNames = {
+        "ActionDone",
         "AdditionalCost",
         "AvailableCharacter",
         "Blue",
+        "BuildCount",
         "BuildDistrictOrder",
         "Built",
         "Character",
         "City",
         "Cost",
+        "Crown",
+        "CurrentCharacter",
         "CurrentTurn",
         "DistrictCard",
         "Expansion",
+        "Gold",
         "Green",
         "InTheDeck",
         "Owner",
@@ -48,21 +60,28 @@ public static class ComponentIds {
         "PlayersCount",
         "Purple",
         "Red",
+        "TakeCoinsFromBankAction",
+        "TakeDistrictCardFromDeckAction",
         "Yellow"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(ActionDoneComponent),
         typeof(AdditionalCostComponent),
         typeof(AvailableCharacterComponent),
         typeof(BlueComponent),
+        typeof(BuildCountComponent),
         typeof(BuildDistrictOrderComponent),
         typeof(BuiltComponent),
         typeof(CharacterComponent),
         typeof(CityComponent),
         typeof(CostComponent),
+        typeof(CrownComponent),
+        typeof(CurrentCharacterComponent),
         typeof(CurrentTurnComponent),
         typeof(DistrictCardComponent),
         typeof(ExpansionComponent),
+        typeof(GoldComponent),
         typeof(GreenComponent),
         typeof(InTheDeckComponent),
         typeof(OwnerComponent),
@@ -70,6 +89,8 @@ public static class ComponentIds {
         typeof(PlayersCountComponent),
         typeof(PurpleComponent),
         typeof(RedComponent),
+        typeof(TakeCoinsFromBankActionComponent),
+        typeof(TakeDistrictCardFromDeckActionComponent),
         typeof(YellowComponent)
     };
 }

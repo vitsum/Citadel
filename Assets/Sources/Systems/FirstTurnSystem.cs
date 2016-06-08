@@ -1,5 +1,6 @@
 ﻿using Entitas;
 using UnityEngine;
+using System.Linq;
 
 class FirstTurnSystem : ISetPool, IInitializeSystem
 {
@@ -8,7 +9,10 @@ class FirstTurnSystem : ISetPool, IInitializeSystem
     public void Initialize()
     {
         int playerCount = _pool.GetEntities(Matcher.PlayersCount).SingleEntity().playersCount.Count;
-        _pool.CreateEntity().AddCurrentTurn(Random.Range(0, playerCount));
+        int playerId = Random.Range(0, playerCount);
+        _pool.CreateEntity().AddCurrentTurn(playerId);
+        var player = _pool.GetEntities(Matcher.Player).FirstOrDefault(e => e.player.Id == playerId);
+        player.IsCrown(true);
     }
 
     public void SetPool(Pool pool)
