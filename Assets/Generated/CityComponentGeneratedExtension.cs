@@ -8,24 +8,25 @@
 //------------------------------------------------------------------------------
 namespace Entitas {
     public partial class Entity {
-        static readonly CityComponent cityComponent = new CityComponent();
+        public CityComponent city { get { return (CityComponent)GetComponent(ComponentIds.City); } }
 
-        public bool isCity {
-            get { return HasComponent(ComponentIds.City); }
-            set {
-                if (value != isCity) {
-                    if (value) {
-                        AddComponent(ComponentIds.City, cityComponent);
-                    } else {
-                        RemoveComponent(ComponentIds.City);
-                    }
-                }
-            }
+        public bool hasCity { get { return HasComponent(ComponentIds.City); } }
+
+        public Entity AddCity(CityBaseView newCity) {
+            var component = CreateComponent<CityComponent>(ComponentIds.City);
+            component.City = newCity;
+            return AddComponent(ComponentIds.City, component);
         }
 
-        public Entity IsCity(bool value) {
-            isCity = value;
+        public Entity ReplaceCity(CityBaseView newCity) {
+            var component = CreateComponent<CityComponent>(ComponentIds.City);
+            component.City = newCity;
+            ReplaceComponent(ComponentIds.City, component);
             return this;
+        }
+
+        public Entity RemoveCity() {
+            return RemoveComponent(ComponentIds.City);
         }
     }
 

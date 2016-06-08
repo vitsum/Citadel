@@ -7,18 +7,69 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 public static class ComponentIds {
-    public const int City = 0;
-    public const int PlayersCount = 1;
+    public const int AdditionalCost = 0;
+    public const int AvailableCharacter = 1;
+    public const int Blue = 2;
+    public const int BuildDistrictOrder = 3;
+    public const int Built = 4;
+    public const int Character = 5;
+    public const int City = 6;
+    public const int Cost = 7;
+    public const int CurrentTurn = 8;
+    public const int DistrictCard = 9;
+    public const int Expansion = 10;
+    public const int Green = 11;
+    public const int InTheDeck = 12;
+    public const int Owner = 13;
+    public const int Player = 14;
+    public const int PlayersCount = 15;
+    public const int Purple = 16;
+    public const int Red = 17;
+    public const int Yellow = 18;
 
-    public const int TotalComponents = 2;
+    public const int TotalComponents = 19;
 
     public static readonly string[] componentNames = {
+        "AdditionalCost",
+        "AvailableCharacter",
+        "Blue",
+        "BuildDistrictOrder",
+        "Built",
+        "Character",
         "City",
-        "PlayersCount"
+        "Cost",
+        "CurrentTurn",
+        "DistrictCard",
+        "Expansion",
+        "Green",
+        "InTheDeck",
+        "Owner",
+        "Player",
+        "PlayersCount",
+        "Purple",
+        "Red",
+        "Yellow"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(AdditionalCostComponent),
+        typeof(AvailableCharacterComponent),
+        typeof(BlueComponent),
+        typeof(BuildDistrictOrderComponent),
+        typeof(BuiltComponent),
+        typeof(CharacterComponent),
         typeof(CityComponent),
-        typeof(PlayersCountComponent)
+        typeof(CostComponent),
+        typeof(CurrentTurnComponent),
+        typeof(DistrictCardComponent),
+        typeof(ExpansionComponent),
+        typeof(GreenComponent),
+        typeof(InTheDeckComponent),
+        typeof(OwnerComponent),
+        typeof(PlayerComponent),
+        typeof(PlayersCountComponent),
+        typeof(PurpleComponent),
+        typeof(RedComponent),
+        typeof(YellowComponent)
     };
 }
