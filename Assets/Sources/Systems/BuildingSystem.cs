@@ -95,11 +95,18 @@ public class BuildingSystem : MonoBehaviour, IReactiveSystem, ISetPool
         {
             var ownerId = entity.owner.OwnerId;
             var player = _pool.GetEntities(Matcher.Player).FirstOrDefault(e => e.player.Id == ownerId);
-            var currentTurn = _pool.GetEntities(Matcher.CurrentTurn).SingleEntity();
+            var currentTurn = _pool.currentTurnEntity;
+
+            if (!currentTurn.isPlaying)
+            {
+                Debug.Log("We are not in playing phase yet");
+                _pool.DestroyEntity(entity);
+                continue;
+            }
 
             if(currentTurn.buildCount.Count == 0)
             {
-                Debug.LogError("Can't build in this turn anymore");
+                Debug.Log("Can't build in this turn anymore");
                 _pool.DestroyEntity(entity);
                 continue;
             }
@@ -111,14 +118,14 @@ public class BuildingSystem : MonoBehaviour, IReactiveSystem, ISetPool
 
             if (targetCard == null)
             {
-                Debug.LogError("Player doesn't have such card");
+                Debug.Log("Player doesn't have such card");
                 _pool.DestroyEntity(entity);
                 continue;
             }
 
             if (targetCard.cost.Price > player.gold.Count)
             {
-                Debug.LogError("Not enough gold");
+                Debug.Log("Not enough gold");
                 _pool.DestroyEntity(entity);
                 continue;
             }
@@ -127,7 +134,7 @@ public class BuildingSystem : MonoBehaviour, IReactiveSystem, ISetPool
             var place = cityEntity.city.City.GetFirstAvailablePlace();
             if (place == null)
             {
-                Debug.LogError("No place to build");
+                Debug.Log("No place to build");
                 _pool.DestroyEntity(entity);
                 continue;
             }

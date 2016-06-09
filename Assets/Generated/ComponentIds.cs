@@ -14,27 +14,36 @@ public static class ComponentIds {
     public const int BuildCount = 4;
     public const int BuildDistrictOrder = 5;
     public const int Built = 6;
-    public const int Character = 7;
-    public const int City = 8;
-    public const int Cost = 9;
-    public const int Crown = 10;
-    public const int CurrentCharacter = 11;
-    public const int CurrentTurn = 12;
-    public const int DistrictCard = 13;
-    public const int Expansion = 14;
-    public const int Gold = 15;
-    public const int Green = 16;
-    public const int InTheDeck = 17;
-    public const int Owner = 18;
-    public const int Player = 19;
-    public const int PlayersCount = 20;
-    public const int Purple = 21;
-    public const int Red = 22;
-    public const int TakeCoinsFromBankAction = 23;
-    public const int TakeDistrictCardFromDeckAction = 24;
-    public const int Yellow = 25;
+    public const int CharacterChosen = 7;
+    public const int Character = 8;
+    public const int ChooseCharacterIntent = 9;
+    public const int ChoosingCharacters = 10;
+    public const int City = 11;
+    public const int Cost = 12;
+    public const int Crown = 13;
+    public const int CurrentCharacter = 14;
+    public const int CurrentTurn = 15;
+    public const int DistrictCard = 16;
+    public const int Expansion = 17;
+    public const int FaceDown = 18;
+    public const int FaceUp = 19;
+    public const int Gold = 20;
+    public const int Green = 21;
+    public const int InTheDeck = 22;
+    public const int KingCallsNextEvent = 23;
+    public const int Owner = 24;
+    public const int Player = 25;
+    public const int PlayersCount = 26;
+    public const int Playing = 27;
+    public const int Purple = 28;
+    public const int PutCharacterFaceDownIntent = 29;
+    public const int Red = 30;
+    public const int StartChoosingCharactersEvent = 31;
+    public const int TakeCoinsFromBankAction = 32;
+    public const int TakeDistrictCardFromDeckAction = 33;
+    public const int Yellow = 34;
 
-    public const int TotalComponents = 26;
+    public const int TotalComponents = 35;
 
     public static readonly string[] componentNames = {
         "ActionDone",
@@ -44,7 +53,10 @@ public static class ComponentIds {
         "BuildCount",
         "BuildDistrictOrder",
         "Built",
+        "CharacterChosen",
         "Character",
+        "ChooseCharacterIntent",
+        "ChoosingCharacters",
         "City",
         "Cost",
         "Crown",
@@ -52,14 +64,20 @@ public static class ComponentIds {
         "CurrentTurn",
         "DistrictCard",
         "Expansion",
+        "FaceDown",
+        "FaceUp",
         "Gold",
         "Green",
         "InTheDeck",
+        "KingCallsNextEvent",
         "Owner",
         "Player",
         "PlayersCount",
+        "Playing",
         "Purple",
+        "PutCharacterFaceDownIntent",
         "Red",
+        "StartChoosingCharactersEvent",
         "TakeCoinsFromBankAction",
         "TakeDistrictCardFromDeckAction",
         "Yellow"
@@ -73,7 +91,10 @@ public static class ComponentIds {
         typeof(BuildCountComponent),
         typeof(BuildDistrictOrderComponent),
         typeof(BuiltComponent),
+        typeof(CharacterChosenComponent),
         typeof(CharacterComponent),
+        typeof(ChooseCharacterIntentComponent),
+        typeof(ChoosingCharactersComponent),
         typeof(CityComponent),
         typeof(CostComponent),
         typeof(CrownComponent),
@@ -81,14 +102,20 @@ public static class ComponentIds {
         typeof(CurrentTurnComponent),
         typeof(DistrictCardComponent),
         typeof(ExpansionComponent),
+        typeof(FaceDownComponent),
+        typeof(FaceUpComponent),
         typeof(GoldComponent),
         typeof(GreenComponent),
         typeof(InTheDeckComponent),
+        typeof(KingCallsNextEventComponent),
         typeof(OwnerComponent),
         typeof(PlayerComponent),
         typeof(PlayersCountComponent),
+        typeof(PlayingComponent),
         typeof(PurpleComponent),
+        typeof(PutCharacterFaceDownIntentComponent),
         typeof(RedComponent),
+        typeof(StartChoosingCharactersEvent),
         typeof(TakeCoinsFromBankActionComponent),
         typeof(TakeDistrictCardFromDeckActionComponent),
         typeof(YellowComponent)

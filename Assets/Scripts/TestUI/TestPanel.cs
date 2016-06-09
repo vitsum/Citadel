@@ -4,6 +4,24 @@ using Entitas;
 
 public class TestPanel : MonoBehaviour {
 
+    public void OnChooseRandomCharacterClick()
+    {
+        if (!Pools.pool.currentTurnEntity.isChoosingCharacters)
+        {
+            Debug.Log("All Characters are chosen");
+            return;
+        }
+        var charactersInTheDeck = Pools.pool.GetEntities(Matcher.AllOf(Matcher.Character, Matcher.InTheDeck));
+        var randomEntity = charactersInTheDeck.ElementAt(Random.Range(0, charactersInTheDeck.Count()));
+        var type = randomEntity.character.Type;
+        Pools.pool.CreateEntity().AddOwner(GetCurrentPlayerId()).AddChooseCharacterIntent(type);
+    }
+
+    public void OnPutRandomCharacterDownClick()
+    {
+
+    }
+
 	public void OnBuildClick()
     {
         var playerId = GetCurrentPlayerId();
@@ -27,7 +45,14 @@ public class TestPanel : MonoBehaviour {
 
     public void OnFinishTurnClick()
     {
-
+        if (Pools.pool.currentTurnEntity.isPlaying)
+        {
+            Pools.pool.CreateEntity().IsKingCallsNextEvent(true);
+        }
+        else
+        {
+            Debug.Log("We are not in playing phase");
+        }
     }
 
     private int GetCurrentPlayerId()
