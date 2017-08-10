@@ -1,2 +1,2 @@
 # Citadel
-This supposed to be an online version of a board game
+This was supposed to become an online version of a board game
